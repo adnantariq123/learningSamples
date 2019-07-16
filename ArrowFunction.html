@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>difference between old function and Arrow function Syntax</title>
+</head>
+<body>
+    
+
+<script>
+// older samples of the way we write functions vs arrow functions 
+
+//example 1
+    function sum (a,b) {
+        return(a+b);
+    }
+
+    let sumArrow = (a,b) => a+b
+
+
+
+
+
+
+// example 2
+    //this is a simple boolean to check if number is positve or not, so -5 would show up as FALSE
+    function isPositive(number) {
+        return number >=0;
+    }
+
+// IMPORTANT and because this function has only ONE parameter 
+// we don't even need parenthises around the parameter number
+    let PositiveArrow = number => number >=0
+
+/* NOW this same ending line above ("number >=0") could be written as 
+    {
+        return number * 2; BUT you have to use the return keyword or yur fucked
+    }*/
+
+
+
+
+
+
+// example 3
+    function ggRandom() {
+        return Math.random()
+    }
+
+    let randomArrow = () => Math.random()
+
+
+
+//example 4
+document.addEventListener('click', function() {
+    console.log("I AM CLICKING HERE");
+})
+
+
+document.addEventListener('click', () => {
+    console.log("I AM CLICKING HERE WITH ARROWS!!! >_<");
+})
+
+
+
+
+// AND what is the difference
+
+class Person {
+    constructor(name) {
+        this.name = name
+    }
+
+    printNameFunction () {
+        // so the "old " style of function the this keyword is different.. it define this where the function was called
+        // so in this case with in this function only \/
+        setTimeout(function() {
+            console.log("coming from regualr function :" + this.name)
+            //console.log("\n");
+        }, 500)
+    }
+
+    printNameArrow () {
+        // while the arrow function the scoping of the "THIS"
+        // in the case of the ARROW function the "THIS does not get redefined "... which is a good thing ^-^
+        setTimeout (() => {
+            console.log("Arrow way :" + this.name)
+        }, 500)
+    }
+
+    // IN OTHER WORDS... USE ARROW FUNCTIONS!!!
+
+
+};
+
+let bbb = new Person("bobby");
+
+bbb.printNameFunction();
+bbb.printNameArrow();    
+    
+    
+</script>
+</body>
+</html> 

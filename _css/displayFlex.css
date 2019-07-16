@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    height:100vh;
+    width:100vw;   
+}
+
+h1 {
+    position: absolute;
+    top:100px;
+    left: 75px;
+    font-family: sans-serif;
+}
+.holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width:75vw;
+    background: #003366;
+    margin: auto;
+}
+
+.mm {
+    border: 1px solid #fff;
+    width: 140px;
+    height: 100px;
+    margin: 0px 50px;
+    /* becuase of the margin 50px(that will appear on the left and right of the mm div, 
+    the width 150px will actually NOT be meet.) which means it might not be the best appraoch for us... maybe/ may be not */
+}
+

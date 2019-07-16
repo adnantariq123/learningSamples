@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Closures </title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+
+/* as i understand them, Closures are functions inside functions??? UPDATE: WRONG(Kinda) CLOSURES are varaiables/parameters 
+that a functions looks for OUTSIDE it's scope(outside it's block) when it needs that variable or parameter
+
+and because in js function are also object... `passed` parameter is avaliable at function xyz
+
+javascript has lexical scoping: that is varialbe that is defined outside your scrope is automatically avalaible inside 
+*/
+
+var addTo = function (passed) {
+
+    var xyz= function (inner) {
+        return passed * inner;
+    }
+
+    return xyz;
+
+}
+
+var addSomething = new addTo(100);
+var somethingSomething = new addTo(100);
+
+
+console.log(addSomething(2));
+console.log(somethingSomething(5));
+
+
+
+
+
+let fff =() => {
+    let i =1;
+    let j = 2;
+    // at return we made another function
+    return () => {
+        //i should be avaliable. J is not BECAUSE we are not using it
+        // but if you did console.log(J); then you would have a second closure
+        console.log(i);
+    }
+}
+
+fff();
+
+console.dir(fff());
+
+for (let i =0; i<3; i++) {
+    const f = () => {
+        console.log(i);
+    }
+    f();
+}
+
+</script>
+</html>
