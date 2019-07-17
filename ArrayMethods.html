@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,67 @@
     <title>Document</title>
     <link href="_css/bootstrap.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-    <table id="OriginalArray" class="table table-striped table-bordered">
-
-    </table>
+        <div class="row">
+            <h1> playing with H1 tags</h1>
+        </div>
     </div>
-   
+    <div class="container">
+        <div class="row">
+            <table id="OriginalArray" class="table table-striped table-bordered">
+
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>Enter a number to price check that number value items or below</p>
+            </div>
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Price" aria-label="Recipient's username"
+                        aria-describedby="lowerPrice" id="inputValue">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="lowerPrice" data-toggle="modal" data-target="#exampleModal">Button</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Items Lower than <span id="showStopper" style="color: tomato"></span></h5> 
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <table id="modalBodyP" class="table table-bordered"></table>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 
 <script src="_js/ArrayMethods.js"></script>
+<script src="_js/jquery-3.4.1.min.js"></script>
+<script src="_js/bootstrap.bundle.js"></script>
+
 </html>

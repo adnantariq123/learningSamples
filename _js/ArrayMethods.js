@@ -9,6 +9,8 @@ const items = [
 ];
 
 
+// this function is great!
+// you will use it twice... first for the initial display of arrays. and second after you filter by the price
 makeTableHTML = (myArray) => {
     let result = "<tbody>";
     //let result;
@@ -49,15 +51,6 @@ window.addEventListener("load", () => {
 });
 
 
-
-
-
-// get all items in array less than or equal to $100 price
-const filteredItems =  items.filter((item) => {
-    return item.price <= 100
-})
-
-console.log(filteredItems);
 
 
 
@@ -112,6 +105,41 @@ const includesTwo = items.includes(100);
 console.log(includesTwo);
 
 */
+
+
+displaylowerPriceDate = () => {  
+    const value = document.getElementById("inputValue").value
+    //console.log("value :"+ value);
+    
+    document.getElementById("showStopper").innerText = value;
+    
+
+    // get all items in array less than or equal to $100 price
+    const filteredItems =  items.filter((item) => {
+    return item.price <= value
+})
+
+;
+let x = document.getElementById("modalBodyP");
+// VERY COOL where you didn't have to write the function again, just sent another parameter, in the lower sample filteredItems to make the table
+x.innerHTML = makeTableHTML(filteredItems);
+}
+
+
+
+//grab value from input and return all array items less than the value
+document.getElementById("lowerPrice").addEventListener("click", displaylowerPriceDate);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
