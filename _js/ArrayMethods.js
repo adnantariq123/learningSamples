@@ -106,7 +106,9 @@ console.log(total);
 
 
 
-const inclues
+const includesTwo = items.includes(100);
+
+console.log(includesTwo);
 
 
 
