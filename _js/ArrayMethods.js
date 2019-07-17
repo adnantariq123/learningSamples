@@ -105,10 +105,13 @@ const total = items.reduce((currentTotal, item) => {
 console.log(total);
 
 
-
+/*
+does not work with an array full of object, RATHER it would work with a `simple` array with just numbers
 const includesTwo = items.includes(100);
 
 console.log(includesTwo);
+
+*/
 
 
 
