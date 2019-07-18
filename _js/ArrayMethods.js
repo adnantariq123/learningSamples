@@ -131,15 +131,39 @@ x.innerHTML = makeTableHTML(filteredItems);
 document.getElementById("lowerPrice").addEventListener("click", displaylowerPriceDate);
 
 
+simple = [1,2,4,6,7,89,3,2,5];
+
+findHighestVal = (myArr) => {
+    let x =0;
+    for(i=0; i<=myArr.length; i++) {
+        if(myArr[i] >= x){
+            x = myArr[i];
+        }
+    }
+    return x;
+}
+
+console.log( findHighestVal(simple));
+
+let justPrice = items.map((item) => {
+    return item.price
+})
+
+console.log(justPrice);
+
+console.log( findHighestVal(justPrice));
 
 
+// findLowestVal = (myArr) => {
+//     let x =0;
+//     for(i=0; i<=myArr.length; i++) {
+//         if(myArr[i] >= x){
+//             x = myArr[i];
+//         }
+//     }
+//     return x;
+// }
 
+console.log("lowest value is :" + Math.min(...simple));
 
-
-
-
-
-
-
-
-
+console.log("lowest value is :" + Math.min(...justPrice));
