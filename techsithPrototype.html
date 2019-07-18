@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let Car = function (color) {
+        this.color= color;
+        this.getColor = function () {
+            return this.color;
+        }
+
+
+        Car.prototype.make = function() {
+            console.log("Brand Name");
+        }
+    }
+
+
+    // SO pay attention to the Car.call. the code below allowed the Mazda object to 'inherit' the properties of the Car object
+    // so when we check in the console.log crappy car it now has all of the properties/method of Car object as well.. new ones
+    let Mazda = function (color){
+        Car.call(this, color);
+        this.hasModal = "323,626,929";
+    }
+    // and you need these two lines.. not sure why
+    Mazda.prototype = Object.create(Car.prototype);
+    Mazda.prototype.constructor =Mazda;
+
+    let crappyCar = new Mazda("brown");
+
+
+// the first method(the perfered method) set's up the object with the prototype and ALSO sets the properties this.color, and this.getColor)
+let car1 = new Car ('red');
+
+// the second method set's up the object with the prototype but does not set the properties
+// and becuse we set up the .make property with the prototype that is avaliable for car2.... white n nerdy
+let car2 =  Object.create(Car.prototype);
+
+
+console.log(car1);
+console.log(car2);
+console.log(crappyCar);
+
+
+
+
+
+
+
+
+
+//console.log(redCar);
+
+
+
+
+
+</script>
+</html>
