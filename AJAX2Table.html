@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AJAX </title>
+</head>
+
+<style>
+  body {
+    font-family: sans-serif;
+    color: #333;
+  }
+
+#daxTable {
+    width: 85%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+  }
+
+#daxTable td,
+#daxTable th {
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+</style>
+
+<body>
+
+
+
+
+
+
+  <div>
+    <h2>The XMLHttpRequest Object</h2>
+    <p id="demo"></p>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+  </div>
+  <BR><BR>
+
+  <table id="daxTable">
+
+  </table>
+
+</body>
+
+
+
+<script>
+
+
+
+  function loadDoc() {
+    var xyz = new XMLHttpRequest();
+    xyz.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        //document.getElementById("daxTable").innerHTML =
+        //this.responseText;
+        //myFunction(this)
+        //console.log(this.responseText)
+
+
+        document.getElementById("daxTable").innerHTML = makeTableHTML(this.responseText);
+      }
+    };
+    //xyz.open("GET", "ajax_info.txt", true);
+    xyz.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+    xyz.send();
+  }
+
+
+
+  function makeTableHTML(myArray) {
+    let result = "<tbody>";
+    //let result;
+
+    // when using the .constructor.name it return an array instead of an object.. ot sure if it's funked
+    let convertStuff = JSON.parse(myArray);
+    console.log(convertStuff.constructor.name);
+    //console.log(convertStuff);
+
+    //return;
+
+    for (var i = 0; i < convertStuff.length; i++) {
+
+      result += "<tr>";
+
+
+
+      // VERY IMPORTANT
+      // look at what .entries does Vs .keys Vs .values  ... play with it ^^
+
+      loved = Object.values(convertStuff[i]);
+      //console.log("loved onces :"+loved);
+
+      for (var j = 0; j < loved.length; j++) {
+        //console.log("did we come to myArray[i] :"+loved);
+        result += "<td>" + loved[j] + "</td>";
+      }
+
+
+      result += "</tr>";
+    }
+    result += "</tbody>";
+    //console.log("result : "+result);
+    return result;
+
+
+  }
+
+
+
+</script>
+
+</html>

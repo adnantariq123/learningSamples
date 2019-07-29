@@ -85,7 +85,7 @@ const inexpensiveItems = items.some((item) => {
     return item.price <= 100;
 })
 
-console.log(inexpensiveItems);
+console.log("inexpensive Items : " +inexpensiveItems);
 
 
 

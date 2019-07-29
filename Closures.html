@@ -24,6 +24,8 @@ javascript has lexical scoping: that is varialbe that is defined outside your sc
 var addTo = function (passed) {
 
     var xyz= function (inner) {
+        console.log("Arguement passed : "+ passed);
+        console.log("Arguement inner : "+ inner);
         return passed * inner;
     }
 

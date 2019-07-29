@@ -17,8 +17,8 @@ function printAge (user) {
 
 
 /*
-typically we would do this in React export default BUT we 
-do not have to as we defined it right on top with the class Defination.. look up!
+typically we would do this in React `EXPORT DEFAULT... BUT we 
+do not have to as we defined it right on TOP with the class Defination.. look up!
 export default User;
 
 
