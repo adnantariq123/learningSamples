@@ -68,6 +68,15 @@
     </tr>
 
     <tr>
+      <td><i>(alternative to both)</i> getAllResponseHeaders<BR><BR>
+        <i>(can target one specifically)</i> this.getResponseHeader("Last-Modified");
+      </td>
+      <td>(that nerdy thing) returns all the response headers, separated by CRLF, as a string, or returns null if no response has been received.</td>
+    </tr>
+    
+    
+
+    <tr>
         <td>status</td>
         <td>Returns the status-number of a request<BR>
             200: "OK"<BR>
@@ -76,7 +85,7 @@
     </tr>
       
       <tr>
-        <td colspan="2" style="text-align: center">... and then and then and then</td>
+        <td colspan="2" style="text-align: center"><b>... and then, and then, and then</b> (<i>in a crazy chinese women's voice</i>)</td>
       </tr>
       <tr>
         <td>open(method, url, async)</td>
@@ -126,6 +135,43 @@
       xyz.open("GET", "ajax_info.txt", true);
       //xyz.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
       xyz.send();
+
+      // xyz.open("POST", "ajax_info.txt", true);
+      // xyz.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // xyz.send("fname=Henry&lname=Ford");      
     }
     </script>
 </html>
+
+
+
+<!--
+
+Another beautiful example, codded out so as to avoid confusion. Using the SAME code above but spliting it 
+in two different function, and using callbacks. take a look!
+
+
+HTML
+<button type="button" onclick="loadDoc('ajax_info.txt', myFunction)">Change Content </button>
+
+
+this would be a better way, and cool
+function loadDoc(url, cFunction) {
+  var xhttp;
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cFunction(this);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
+function myFunction(xhttp) {
+  document.getElementById("demo").innerHTML =
+  xhttp.responseText;
+}
+
+-->

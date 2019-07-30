@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX </title>
+    <script src="/_js/jquery-3.4.1.min.js"></script>
+</head>
+
+<style>
+  body {
+    font-family: sans-serif;
+    color: #333;
+  }
+
+.daxTable {
+  width:85%;
+  margin: 0 auto;
+  border:1px solid #ccc;
+}
+
+.daxTable td, .daxTable th {
+  border:1px solid #ccc;
+  text-align: left;
+}
+
+
+
+</style>
+<body>
+
+  <h3>AJAX = Asynchronous JavaScript And XML.</h3>
+
+  <p>All modern browsers support the XMLHttpRequest object.</p>
+
+  <p>The XMLHttpRequest object can be used to exchange data with a web server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page</p>
+  <BR>
+
+
+
+
+    <div>
+        <h2>The XMLHttpRequest Object</h2>
+        <p id="demo"></p>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+    </div>
+</body>
+
+
+
+<script>
+
+//https://jsonplaceholder.typicode.com/posts
+
+
+// does the same thing js code did for ajax but with a lot less code
+
+
+
+loadDoc =() => {
+  $.ajax ({
+    url:"ajax_info.txt",
+    method:"GET",
+    success: function(data) {
+        $("#demo").text(data)
+        console.log(data)
+    },
+
+  })
+}
+
+    </script>
+</html>
+
+
+
+<!--
+
+Another beautiful example, codded out so as to avoid confusion. Using the SAME code above but spliting it 
+in two different function, and using callbacks. take a look!
+
+
+HTML
+<button type="button" onclick="loadDoc('ajax_info.txt', myFunction)">Change Content </button>
+
+
+this would be a better way, and cool
+function loadDoc(url, cFunction) {
+  var xhttp;
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cFunction(this);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+
+
+function myFunction(xhttp) {
+  document.getElementById("demo").innerHTML =
+  xhttp.responseText;
+}
+
+-->

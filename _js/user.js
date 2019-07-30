@@ -12,7 +12,7 @@ function printName(user) {
 
 
 function printAge (user) {
-    console.log(`User is ${user.age} years old`)
+    console.log(`${user.name} is ${user.age} years old`)
 }
 
 
