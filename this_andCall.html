@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p><b>.call</b> :This is a very good example of using somebodies else method on somebodies else object!  CRAZY IMPRESSIVE! </p>
+</body>
+
+<script>
+'use strict';
+
+
+// at this point this is pointing to the window, so to console it we can do window.table
+this.table = "Wwindow table"
+
+console.log(window.table);
+
+// ****************
+const cleanTable = function (soap) {
+    console.log(`trying to clean ${this.table} and I'm using ${soap}`);
+}
+
+
+
+let johnRoom = {
+    table: "John's room table!",
+    cleanTable() {
+        console.log(`Cleaning ${this.table}`);
+    }
+}
+
+johnRoom.cleanTable();
+
+
+/*LOOK WHAT WE JUST DID!!! the function "cleanTable which was define " below the "****************" above
+is now using the johnRoom.table property to that function, and we are doing that by attaching them together by 
+using the .call AMAZING!
+*/
+cleanTable.call(johnRoom, "OMG AMAZING!!!" );
+
+
+
+
+
+/*
+cleanTable(); 
+is trying to use the this keyword to get the table. howevere since we 
+are using the strict approach we than have to use the .call appraoch
+
+*/
+
+cleanTable.call(this, "some Eff saop" );
+
+
+
+this.garage = {
+    table: "table inside the garage",
+    cleanTable() {
+        console.log(`Cleaning ${this.table}`);
+    }
+}
+
+console.log(window.garage.table);
+
+
+
+
+
+</script>
+</html>

@@ -60,7 +60,7 @@ const itemNames =  items.map((item) => {
     return item.namezz
 })
 
-console.log(itemNames);
+console.log("items.map : " +itemNames);
 
 
 
@@ -69,7 +69,7 @@ const foundItem = items.find((item) => {
     return item.namezz ==='Book';
 })
 
-console.log("found the item using the .find method "+ foundItem);
+console.log("found the item using the .find method "+ foundItem.namezz);
 
 
 
