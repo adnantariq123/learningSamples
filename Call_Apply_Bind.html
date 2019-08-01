@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+
+let add = function (c) {
+    console.log(this.a + this.b + c);
+}
+
+let obj = {
+    a:1,
+    b:2
+};
+
+
+add.call(obj, 10);
+
+
+
+
+
+
+
+
+
+
+
+
+let mammal =  function (legs) {
+    this.legs = legs;
+}
+
+let cat = function (legs, isDomesticated) {
+    mammal.call(this, legs);
+    this.isDomesticated = isDomesticated;
+}
+
+let lion =  new cat (4,false);
+
+console.log(lion);
+
+
+
+
+
+let numArray = [1,2,3];
+
+// did not work- ignore
+// let minx = function (xyz) {
+//     return Math.min(xyz);
+// } 
+
+// console.log(minx(numArray));
+
+console.log(Math.min.apply(null,numArray));
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

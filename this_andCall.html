@@ -19,6 +19,8 @@ this.table = "Wwindow table"
 
 console.log(window.table);
 
+
+
 // ****************
 const cleanTable = function (soap) {
     console.log(`trying to clean ${this.table} and I'm using ${soap}`);
@@ -69,6 +71,42 @@ console.log(window.garage.table);
 
 
 
+
+const mitten = function(soapy) {
+    let that = this;
+    const pigsnChicken =  function (_soapy) {
+        console.log(`what is this black magic ${that.table} and how was it cleaned ${_soapy}`)
+    }
+    pigsnChicken(soapy);
+}
+
+mitten.call(johnRoom, "||||" );
+
+
+
+
+
+
+
+// and this here is a constructor
+let createRoom = function (name) {
+    this.table = `${name}s table`
+}
+
+// and to add a function named cleanTable to the Constructor createRoom... this way ever object created using the createRoom now has
+// the property table AND the function cleanTable
+createRoom.prototype.cleanTable = function(soap) {
+    console.log(`starting to get confusing..but still cool. This is coming from ${this.table}, and we are using ${soap} to clean`)
+}
+
+
+
+// now using the createRoom constructor we can make more objects
+const jillsRoom = new createRoom("jill");
+
+cleanTable.call(jillsRoom, "4 jilly" );
+
+console.log(jillsRoom);
 
 </script>
 </html>
