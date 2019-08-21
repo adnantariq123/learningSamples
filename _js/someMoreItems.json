@@ -1,0 +1,7 @@
+{ "items": [
+  { "namezz": "House", "price": 350000 },
+  { "namezz": "Car", "price": 40000 },
+  { "namezz": "Boat", "price": 16000 },
+  { "namezz": "Moter bikes", "price": 20000 }
+]
+}

@@ -1,0 +1,10 @@
+{ "items": [
+  { "namezz": "Bike", "price": 100 },
+  { "namezz": "TV", "price": 700 },
+  { "namezz": "Album", "price": 10 },
+  { "namezz": "Book", "price": 5 },
+  { "namezz": "Phone", "price": 500 },
+  { "namezz": "Computer", "price": 1000 },
+  { "namezz": "Keyboard", "price": 25 }
+]
+}

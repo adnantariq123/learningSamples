@@ -39,7 +39,7 @@ daPerson.printMyName();
 daPerson.printGender();
 daPerson.printMyAge();
 
-
+console.log("\n\n\n");
 oriana.printMyName();
 oriana.printGender();
 oriana.printMyAge();
