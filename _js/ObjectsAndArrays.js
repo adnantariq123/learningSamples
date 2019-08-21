@@ -1,23 +1,18 @@
-
 function loadDoc(location, callback) {
     var xyz = new XMLHttpRequest();
-    xyz.onreadystatechange = function() {
+    xyz.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-        
             this.responseText;
 
-        //console.log(this.responseText)
-        //makesomething(this.responseText);
-        callback.apply(xyz);
-        
+            //console.log(this.responseText)
+            //makesomething(this.responseText);
+            callback.apply(xyz);
         }
     };
 
-    xyz.open("GET", location , true);
+    xyz.open("GET", location, true);
     xyz.send();
-   
 }
-
 
 /* loadDoc() completes immediately... You are dealing with an asynchronous function call here. 
 Results are handled when they arrive, not when the function finishes running.
@@ -62,37 +57,56 @@ loadDoc("/_js/someitems.json",
 } );
 */
 
+function makeCombinationTwo() {
+    var combine1;
+    var combine2;
 
+    var c1, c2;
 
-let combine1;
-let combine2;
+    loadDoc("/_js/someitems.json", function () {
+        // "this" is the XHR object here! ...in your nutcase example it is xyz ;-)
+        combine1 = this.responseText;
 
+        // have to use the localStorage to pass the varaible outside this functional scope :(
+        localStorage.combine1 = combine1;
+    });
 
-loadDoc("/_js/someitems.json",
-function () {
-    // "this" is the XHR object here! ...in your nutcase example it is xyz ;-)
-    combine1 = JSON.parse(this.responseText);
-        //console.log(combine1.items);
-    }
-);
+    c1 = localStorage.getItem("combine1");
+    combine1 = makeObj(c1).items;
 
-console.log(combine1);
+    console.log(combine1);
 
-loadDoc("/_js/someMoreItems.json",
-function () {
-    // "this" is the XHR object here! ...in your nutcase example it is xyz ;-)
-    combine2 = JSON.parse(this.responseText);
-        //console.log(combine2.items);
-    }
-);
+    loadDoc("/_js/someMoreItems.json", function () {
+        // "this" is the XHR object here! ...in your nutcase example it is xyz ;-)
+        //combine2 = JSON.parse(this.responseText);
+        combine2 = this.responseText;
 
+        localStorage.combine2 = combine2;
+    });
 
-function makeCombinationTwo () {
+    c2 = localStorage.getItem("combine2");
+    combine2 = makeObj(c2).items;
 
-    newObj = {...combine1, ...combine2};
-    //return newObj;
+    console.log(combine2);
+
+    //var newObj = { ...combine1, ...combine2 };
+    var newObj = [...combine1, ...combine2];
+    console.log(newObj);
+
+    return newObj;
+    //return newObj; return would not work!
     //console.log(combine1);
 }
 
+// the return  newObj; gives a [object Object] to 'see' that contetn we must using stringify
+//console.log("did you make two : " + JSON.stringify(makeCombinationTwo()));
+
+
+
+function makeObj(a) {
+    return JSON.parse(a);
+}
+
+
+
 makeCombinationTwo();
-// console.log("did you make two : " + makeCombinationTwo() );
