@@ -10,9 +10,12 @@ $.when(
         url: "/_js/someitems.json", 
         method:"GET",
         success: function(data){     
-                result1 = data;                  
+                result1 = data; 
+                //console.log(result1);                
         }           
     }),
+
+    
 
     $.ajax({ //Seconds Request
         url: "/_js/someMoreItems.json", 
