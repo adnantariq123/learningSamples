@@ -5,6 +5,7 @@ $( document ).ready(function() {
 
 var result1;
 var result2;
+
 $.when(
     $.ajax({ // First Request
         url: "/_js/someitems.json", 
