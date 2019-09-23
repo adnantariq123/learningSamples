@@ -76,7 +76,7 @@ console.log("found the item using the .find method "+ foundItem.namezz);
 
 
 items.forEach((item) => {
-    console.log(item.namezz)
+    console.log("Using .forEach " +item.namezz)
 });
 
 

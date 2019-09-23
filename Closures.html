@@ -39,7 +39,7 @@ var addSomething = new addTo(100);
 var somethingSomething = new addTo(100);
 
 
-console.log(addSomething(2));
+//console.log(addSomething(2));
 console.log(somethingSomething(5));
 
 
@@ -53,13 +53,13 @@ let fff =() => {
     return () => {
         //i should be avaliable. J is not BECAUSE we are not using it
         // but if you did console.log(J); then you would have a second closure
-        console.log(i);
+        console.log(" i: " +i);
     }
 }
 
 fff();
 
-console.dir(fff());
+//console.dir(fff());
 
 for (let i =0; i<3; i++) {
     const f = () => {
