@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p> another cool way of using promise and even 'try' to parse the json IF it can be pased.</p>
+    <p>but focus more on that promse .. everything here is cool!</p>
+</body>
+
+<script>
+    function promiseAjax (url, parseJson) {
+        return new Promise(function (resolve,reject){
+            const xhr = new XMLHttpRequest;
+
+            xhr.onload = function () {
+                if (parseJson) {
+                    try {
+                        resolve(JSON.parse(this.responseText));
+                    } catch (e) {
+                        reject(e);
+                    }
+                } else {
+                    resolve(this.responseText);
+                }
+                
+            };
+
+            xhr.onerror = function () {
+                reject(new Error ("Something is off son..."));
+            };
+
+            xhr.open("get", url);
+            xhr.send();
+
+
+        });
+    }
+
+    promiseAjax ("_js/someitems.json", true).then(function (jsonString){
+        console.log(jsonString);
+    }).catch(function(err) {
+        console.error(err);
+    })
+
+</script>
+</html>

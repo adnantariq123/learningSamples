@@ -23,7 +23,7 @@ let promiseAjax = new Promise (function ( resolve,reject) {
     }
 
     loadDoc("/_js/someitems.json");
-    loadDoc("/_js/someMoreItems.json");
+    // loadDoc("/_js/someMoreItems.json"); IGNORE THIS FOR NOW.. for to files look at the promiseAjax2.js file
 })
 
 
