@@ -23,7 +23,7 @@
             try {
               resolve(JSON.parse(this.responseText));
             } catch (e) {
-              reject(e);
+              reject("Something is off son..." + e);
             }
           } else {
             resolve(this.responseText);
@@ -44,29 +44,27 @@
       .then(function(jsonString) {
         const something = jsonString
         
-          
-
         Highcharts.chart("chart1", {
             chart: {
                type: 'bar'
            },            
           title: {
-            text: "Solar Employment Growth by Sector, 2010-2016"
+            text: "Loreum Ipson baby!"
           },
 
           subtitle: {
-            text: "Source: thesolarfoundation.com"
+            text: "using the someitems_HC.json file"
           },
 
           yAxis: {
             title: {
-              text: "Number of Employees"
+              //text: "Number of Employees"
             }
           },
           legend: {
-            layout: "vertical",
-            align: "right",
-            verticalAlign: "middle"
+            //layout: "vertical",
+            align: "center",
+            verticalAlign: "bottom"
           },
 
           plotOptions: {
