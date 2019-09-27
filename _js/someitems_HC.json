@@ -1,0 +1,9 @@
+[
+  { "name": "Bike", "data": [100] },
+  { "name": "TV", "data": [700] },
+  { "name": "Album", "data": [10] },
+  { "name": "Book", "data": [5] },
+  { "name": "Phone", "data": [500] },
+  { "name": "Computer", "data": [1000] },
+  { "name": "Keyboard", "data": [25] }
+]
