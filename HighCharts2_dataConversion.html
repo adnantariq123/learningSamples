@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="chart1"></div>
+  </body>
+
+
+  <script src="_js/highcharts.src.js"></script>
+
+  <script>
+
+    function promiseAjax(url, parseJson) {
+      return new Promise(function(resolve, reject) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          if (parseJson) {
+            try {
+              resolve(JSON.parse(this.responseText));
+            } catch (e) {
+              reject("Something is off son..." + e);
+            }
+          } else {
+            resolve(this.responseText);
+          }
+        };
+
+        xhr.onerror = function() {
+          reject(new Error("Something is off son..."));
+        };
+
+        xhr.open("get", url);
+        xhr.send();
+      });
+    }
+
+    promiseAjax("_js/someitems.json", true)
+      .then (function (xyz) {
+        console.log(xyz);
+        /*
+        and in order for Data to be used as a "series" we must make it loks like this:
+        { "name": "Bike", "data": [100] }, with he key named as "name" & "data"
+
+        Currently it has it as 
+        { "items": [
+        { "namezz": "Bike", "price": 100 },
+        */
+
+        const simple = xyz.items;
+        console.log(simple);
+
+        /* now take "simple" and rename a few of those keys
+        const itemNames =  simple.map((xxx) => {
+
+            return (itemNames.keys + xxx.namezz + xxx.keys + xxx.price)
+        })
+        console.log(itemNames);*/
+
+
+        const result = simple.map(xyz => 
+        ({name: xyz.namezz, data: [xyz.price]}));
+
+
+        console.log(result);
+
+
+        doCharts(result);
+        
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+      //.then(function(jsonString) 
+
+      function doCharts(jsonString) 
+      {
+        const something = jsonString
+        
+        Highcharts.chart("chart1", {
+            chart: {
+               type: 'bar'
+           },            
+          title: {
+            text: "Loreum Ipson baby!"
+          },
+
+          subtitle: {
+            text: "using the someitems_HC.json file"
+          },
+
+          yAxis: {
+            title: {
+              //text: "Number of Employees"
+            }
+          },
+          legend: {
+            //layout: "vertical",
+            align: "center",
+            verticalAlign: "bottom"
+          },
+
+          plotOptions: {
+            series: {
+              label: {
+                //connectorAllowed: false
+              },
+              //pointStart: 2010
+            }
+          },
+
+          series:something
+
+
+
+        });
+
+        console.log(something);
+      };
+
+
+  </script>
+</html>
