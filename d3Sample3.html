@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="_js/d3.js"></script>
+</head>
+
+<body>
+    <div class="simple"></div>
+    
+</body>
+
+<script>
+    var gg = [30,86,168,281,303, 350];
+
+    d3.select(".simple") // select an element from the DOM
+    .selectAll("div") // inside that element create a bunch of something.. in this sample it's div
+    .data(gg) // now add the data 
+    .enter() // fire the function to create it 
+    .append("div") // add it to the somethign above... in this case div
+    .style("width" , function (d) {return d + "px";}) // give those divs some style
+    .style("background", "green") // more styles
+    .text(function(d){return "cost :" + d;}); // add basic text
+
+
+
+
+    
+</script>
+</html>

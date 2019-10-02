@@ -5,7 +5,8 @@ const items = [
   { namezz: "Book", price: 5 },
   { namezz: "Phone", price: 500 },
   { namezz: "Computer", price: 1000 },
-  { namezz: "Keyboard", price: 25 }
+  { namezz: "Keyboard", price: 25 }, 
+  { namezz: "chair", price: 45 }
 ];
 
 
@@ -167,3 +168,11 @@ console.log( findHighestVal(justPrice));
 console.log("lowest value is :" + Math.min(...simple));
 
 console.log("lowest value is :" + Math.min(...justPrice));
+
+
+
+// this last one I just added to shwo the power of MAP and HOW to make new object with new keys using the same old values
+const justXyz = items.map(xyz=> (
+    { newnew :xyz.namezz, price : (xyz.price *2 ), onShelf: "yes" }));
+
+console.log(justXyz);

@@ -82,7 +82,7 @@
                type: 'bar'
            },            
           title: {
-            text: "Loreum Ipson baby!"
+            text: "Hello Parro Ipson baby!"
           },
 
           subtitle: {
@@ -102,7 +102,12 @@
 
           plotOptions: {
             series: {
+              dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}'
+            },
               label: {
+                
                 //connectorAllowed: false
               },
               //pointStart: 2010
