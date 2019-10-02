@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="chart1"></div>
+  </body>
+
+  <script src="_js/highcharts.src.js"></script>
+  <!-- <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+
+  <script>
+    function promiseAjax(url, parseJson) {
+      return new Promise(function(resolve, reject) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          resolve(this.responseText);
+        };
+
+        xhr.open("get", url);
+        xhr.send();
+      });
+    }
+
+    promiseAjax("_js/201306-citibike-tripdata.csv", true)
+      .then(function(xyz) {
+        //console.log(xyz + "\n\n");
+
+        /* Ignore processData for now...
+        function processData(allText) {
+          var allTextLines = allText.split(/\r\n|\n/);
+          var headers = allTextLines[0].split(",");
+          var lines = [];
+
+          for (var i = 1; i < allTextLines.length; i++) {
+            var data = allTextLines[i].split(",");
+            if (data.length == headers.length) {
+              var tarr = [];
+              for (var j = 0; j < headers.length; j++) {
+                tarr.push(headers[j] + ":" + data[j]);
+                
+              }
+              
+              lines.push(tarr);
+            }
+          }
+          
+          console.log(lines);
+        }
+
+
+        processData(xyz);
+        */
+
+
+
+
+        //var csv is the CSV file with headers
+        function csvJSON(csv) {
+          var lines = csv.split("\n");
+
+          var result = [];
+          
+
+          var headers = lines[0].split(",");
+
+          for (var i = 1; i < lines.length; i++) {
+            var obj = {};
+            var currentline = lines[i].split(",");
+
+            for (var j = 0; j < headers.length; j++) {
+              obj[headers[j]] = currentline[j];
+            }
+
+            result.push(obj);
+          }
+
+          //console.log(result);
+          //return result; //JavaScript object
+          //return JSON.parse(result); //JSON
+          return result;
+        }
+
+        const BigBikeData = {...csvJSON(xyz)};
+
+        console.log(BigBikeData);
+
+        const tripduration = BigBikeData[1].tripduration;
+
+        console.log(tripduration);
+        
+
+
+        //console.log(csvJSON(xyz))
+
+        //doCharts(result);
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+    //.then(function(jsonString)
+
+
+
+
+    function doCharts(jsonString) {
+      const something = jsonString;
+
+      Highcharts.chart("chart1", {
+        chart: {
+          type: "bar"
+          //type: 'column'
+          //type: 'pie' ---pie type will require addtional formating to the data, and will not work correctly
+          //type: "pie"
+        },
+        title: {
+          text: "Hello Parro Ipson baby!"
+        },
+
+        subtitle: {
+          text: "using the someitems_HC.json file"
+        },
+
+        yAxis: {
+          title: {
+            //text: "Number of Employees"
+          }
+        },
+        legend: {
+          //layout: "vertical",
+          align: "center",
+          verticalAlign: "bottom"
+        },
+
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: "{point.y:.1f}"
+            },
+            label: {
+              //connectorAllowed: false
+            }
+            //pointStart: 2010
+          }
+        },
+
+        series: something
+      });
+
+      console.log(something);
+    }
+  </script>
+</html>
