@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
+
   <body>
     <div id="chart1"></div>
   </body>
-
 
   <script src="_js/highcharts.src.js"></script>
 
@@ -39,15 +39,17 @@
       });
     }
 
-    promiseAjax("_js/someitems_HC.json", true)
-
+    // over here we are loading different json files.. with different formats  for the 'type' of highchart we want to load
+    //promiseAjax("_js/someitems_HC.json", true)
+    promiseAjax("_js/someitems_HC_PIE.json", true)
       .then(function(jsonString) {
-        const something = jsonString
-        
+        const something = jsonString;
+
         Highcharts.chart("chart1", {
-            chart: {
-               type: 'bar'
-           },            
+          chart: {
+            //type: 'bar'
+            type: "pie"
+          },
           title: {
             text: "Loreum Ipson baby!"
           },
@@ -71,15 +73,12 @@
             series: {
               label: {
                 //connectorAllowed: false
-              },
+              }
               //pointStart: 2010
             }
           },
-
-          series:something
-
-
-
+          // attaching the magic here ( magix being the data from the json file)
+          series: something
         });
 
         console.log(something);

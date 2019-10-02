@@ -10,11 +10,9 @@
     <div id="chart1"></div>
   </body>
 
-
   <script src="_js/highcharts.src.js"></script>
 
   <script>
-
     function promiseAjax(url, parseJson) {
       return new Promise(function(resolve, reject) {
         const xhr = new XMLHttpRequest();
@@ -41,7 +39,7 @@
     }
 
     promiseAjax("_js/someitems.json", true)
-      .then (function (xyz) {
+      .then(function(xyz) {
         console.log(xyz);
         /*
         and in order for Data to be used as a "series" in highcharts we must make it looks like this:
@@ -55,74 +53,72 @@
         const simple = xyz.items;
         console.log(simple);
 
-
         //************ MOST IMPORTANT STEP HERE TO CONVERT THE OBJECT USING MAP WITH THE NEW KEYS {name: xyz.Stuff , data: xyz.Stuff}
-        const result = simple.map(xyz => 
-        ({name: xyz.namezz, data: [xyz.price]}));
-
+        const result = simple.map(xyz => ({
+          name: xyz.namezz,
+          data: [xyz.price]
+        }));
 
         console.log(result);
 
-
         doCharts(result);
-
       })
       .catch(function(err) {
         console.error(err);
       });
 
-      //.then(function(jsonString) 
+    //.then(function(jsonString)
 
-      function doCharts(jsonString) 
-      {
-        const something = jsonString
-        
-        Highcharts.chart("chart1", {
-            chart: {
-               type: 'bar'
-           },            
+    function doCharts(jsonString) {
+      const something = jsonString;
+
+      Highcharts.chart("chart1", {
+        chart: {
+          type: 'bar'
+          //type: 'column'
+          //type: 'pie' ---pie type will require addtional formating to the data, and will not work correctly
+          //type: "pie"
+        },
+        title: {
+          text: "Hello Parro Ipson baby!"
+        },
+
+        subtitle: {
+          text: "using the someitems_HC.json file"
+        },
+
+        yAxis: {
           title: {
-            text: "Hello Parro Ipson baby!"
-          },
+            //text: "Number of Employees"
+          }
+        },
+        legend: {
+          //layout: "vertical",
+          align: "center",
+          verticalAlign: "bottom"
+        },
 
-          subtitle: {
-            text: "using the someitems_HC.json file"
-          },
-
-          yAxis: {
-            title: {
-              //text: "Number of Employees"
-            }
-          },
-          legend: {
-            //layout: "vertical",
-            align: "center",
-            verticalAlign: "bottom"
-          },
-
-          plotOptions: {
-            series: {
-              dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}'
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: "{point.y:.1f}"
             },
-              label: {
-                
-                //connectorAllowed: false
-              },
-              //pointStart: 2010
+            label: {
+              //connectorAllowed: false
             }
-          },
+            //pointStart: 2010
+          }
+        },
 
-          series:something
+        series:something
 
+        
+      
+      
+      });
 
-
-        });
-
-        console.log(something);
-      };
-
-
+      console.log(something);
+    }
   </script>
 </html>
