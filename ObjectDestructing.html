@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+    // look what you can do with Destructing!
+    const alphabet  = ["a","b","c","d","e","g","h"]
+    const numbers = [1,2,3,4,5,]
+
+    // just made a bunch of varaibles from an array
+    const [a,b, ...rest] = numbers;
+
+    console.log(rest);
+    console.log(a);
+
+    // how easy is it to combine the two different arrays
+    const newArray = [...alphabet, ... numbers];
+
+
+    console.log(newArray);
+
+    function sumAndMultiply (a,b) {
+        // BECAUSE THE FUNCTION IS RETURING AN ARRAY
+        return [a+b, a*b]
+    }
+
+    const jimmy = sumAndMultiply(10,3);
+    //LOOK WHAT WE ARE DOING HERE
+    console.log(jimmy);
+    // WE CAN TARGET PARTS OF THAT ARRAY WHICH IS COMING FROM THE RETURN SECTION
+    console.log(jimmy[0]);
+
+    console.log(jimmy[1]);
+
+    const personOne = {
+        name: "adi",
+        age:39,
+        address: {
+            street: "susan drive",
+            city: "somerset",
+            state: "NJ"
+        }
+    }
+
+    const personTwo = {
+        name: "Oriana",
+        age:36,
+        address: {
+            street: "some drive",
+            city: "franklin",
+            state: "NJ"
+        }
+    }
+
+    // problem with this approach is that the KEYS needs to match what's in the object... NOT REALLY! look below
+    const {name, age} = personTwo;
+    console.log(name, age);
+
+    // BUT what if we want to varaiable name to be different than the keys
+    const {name: yolo, age: notDead} = personTwo;
+
+    console.log(yolo);
+    console.log(notDead);
+    // fucking cool!
+
+</script>
+</html>
