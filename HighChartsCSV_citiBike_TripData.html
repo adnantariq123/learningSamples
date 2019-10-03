@@ -125,10 +125,13 @@
 
       Highcharts.chart("chart1", {
         chart: {
-          type: "bar"
-          //type: 'column'
+          //zoomType: 'x', did not work for some reason :(
+          //type: "bar"
+          type: 'column'
           //type: 'pie' ---pie type will require addtional formating to the data, and will not work correctly
           //type: "pie"
+
+          
         },
         title: {
           text: "Grabbing data from a csv file.. formating it and then highcharts it"
@@ -145,9 +148,11 @@
         },
         legend: {
           //layout: "vertical",
-          align: "center",
-          verticalAlign: "bottom"
+          // align: "center",
+          // verticalAlign: "bottom",
+          enabled: false,
         },
+
 
         plotOptions: {
           series: {

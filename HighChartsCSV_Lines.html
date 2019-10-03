@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <style>
+    #chart1 {
+      width: 100%;
+      height: 700px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="chart1"></div>
+  </body>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+  <script>
+    function promiseAjax(url, parseJson) {
+      return new Promise(function(resolve, reject) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+          resolve(this.responseText);
+        };
+
+        xhr.open("get", url);
+        xhr.send();
+      });
+    }
+
+    //promiseAjax("_js/201306-citibike-tripdataShort.csv", true)
+    promiseAjax("https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json", true)
+      .then(function(xyz) {
+
+
+
+        //console.log(csvJSON(xyz))
+
+        //const noob = JSON.parse(xyz);
+
+        doCharts(JSON.parse(xyz));
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+    //.then(function(jsonString)
+
+
+
+
+    function doCharts(jsonString) {
+      const something = jsonString;
+
+      Highcharts.chart("chart1", {
+        chart: {
+          //zoomType: 'x', did not work for some reason :(
+          //type: "bar"
+          //type: 'column'
+          //type: 'pie' ---pie type will require addtional formating to the data, and will not work correctly
+          //type: "pie"
+
+          
+        },
+        title: {
+          text: "Grabbing data from a csv file.. formating it and then highcharts it"
+        },
+
+        subtitle: {
+          text: "using the 201306-citibike-tripdata.csv file"
+        },
+
+        yAxis: {
+          title: {
+            //text: "Number of Employees"
+          }
+        },
+        legend: {
+          //layout: "vertical",
+          // align: "center",
+          // verticalAlign: "bottom",
+          enabled: false,
+        },
+
+
+        plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+
+      series: [{  
+        type: 'area',
+        name: 'USD to EUR',
+        data:something
+        }]
+      });
+
+
+      console.log(something);
+    }
+  </script>
+</html>
