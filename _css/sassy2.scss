@@ -24,6 +24,15 @@ header {
 .contact {
     // we call that function deFlexer with different parameter
     @include deFlexer(row); 
+    background: #ee3;
+}
+
+.loveless {
+    // this Extend thing is VERY powerful it basically grab everything thatw as there in .contact css
+    // and put it in this .loveless as well ... WOW!
+    @extend .contact;
+    background: red;
+
 }
 
 button {
