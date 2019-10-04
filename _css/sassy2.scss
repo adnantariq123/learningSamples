@@ -1,0 +1,34 @@
+
+// imported all the varaiable
+@import './colorVar';
+
+
+// we just made a function in CSS or as it's called a Mixen
+@mixin deFlexer($direction) {
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+    flex-direction: $direction;   
+}
+
+header {
+    // we call that function deFlexer with different parameter
+    @include deFlexer(coloumn);
+    // used a varaible to set bk color
+    background: $darkBlue;
+
+    color:$white;
+}
+
+.contact {
+    // we call that function deFlexer with different parameter
+    @include deFlexer(row); 
+}
+
+button {
+    border:1px solid $white;
+    &:hover{
+        border:1px solid #434;
+    }
+}
