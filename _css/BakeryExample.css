@@ -1,0 +1,134 @@
+body {
+  background: #3a3a3a;
+  color: white;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* HEADER */
+  /* FEATURES */
+  /* FOOTER */
+  /* RESPONSIVE RULES */
+}
+
+body header {
+  background-color: black;
+  /*  sorry for the strange urls, I had to upload them to google drive  */
+  background-image: url("http://gdurl.com/1glme");
+  background-size: 100%;
+  background-position: center;
+  height: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+body header a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+
+body header .mobile {
+  display: none;
+}
+
+body header .logo a {
+  background-image: url("http://gdurl.com/b9cd");
+  background-size: 300px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 80px;
+  position: relative;
+  text-indent: -9999999px;
+  top: -30px;
+  width: 300px;
+}
+
+body nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+body .features {
+  background: white;
+  color: gray;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body .features figure {
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 200px;
+}
+
+body .features figure img {
+  border: 1px solid white;
+  border-radius: 50%;
+  -webkit-box-shadow: gray 0 0 10px;
+          box-shadow: gray 0 0 10px;
+  width: 200px;
+}
+
+body footer {
+  background: black;
+  color: gray;
+  font-size: 12px;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 715px) {
+  body header {
+    height: 250px;
+    background-position: 0 -30px;
+  }
+  body header .mobile {
+    display: inline-block;
+  }
+  body header .desktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body header {
+    height: 200px;
+    background-position: 0 -0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body .features {
+    background: red;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 800px) {
+  body .features {
+    background: pink;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  body header {
+    height: 175px;
+  }
+}
+/*# sourceMappingURL=BakeryExample.css.map */
