@@ -152,7 +152,7 @@ let justPrice = items.map((item) => {
 
 console.log(justPrice);
 
-console.log( findHighestVal(justPrice));
+console.log( "findHighestVal " + findHighestVal(justPrice));
 
 
 // findLowestVal = (myArr) => {
