@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700,900');
+
+html {
+    width:100%;
+}
+body{
+    font-family: 'Raleway';
+    width: 100%;
+}
+
+a {
+   text-decoration: none; 
+}
+
+header {
+    position:absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+header .logo {
+    margin: 0px auto;
+    display: block;
+}
+
+.home-hero {
+    background-image: url("../_img/hero-bg.jpg");
+    /* width: 100%; */
+    position: relative;
+    padding: 4rem;
+    padding-top: 6rem;
+    color: #fff;
+}
+
+
+.home-hero .title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+.home-hero .title span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+
+.button {
+    border: 1px solid #8f8;
+    text-transform: uppercase;
+    padding: 1em 3em;
+    color:#8f8;
+    font-weight: bold;
+}
+
+
+.port-desc {
+    display: none;
+}
