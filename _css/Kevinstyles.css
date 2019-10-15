@@ -114,6 +114,31 @@ h1 {
     position: relative;
 }
 
+.portfolio {
+    padding-top: 2em;
+
+}
+
+
+.portfolio h1 {
+    font-weight: 400;
+    position: relative;
+}
+
+.portfolio h1:before {
+    content: "";
+    position: absolute;
+    width:50%;
+    left: 0;
+    right: 0;
+    top: 0;
+    height:1px;
+    background:#8f8;
+}
+
+
+
+
 @media screen and (min-width: 700px) {
 
     .home-hero {
