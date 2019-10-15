@@ -40,15 +40,15 @@
     }
 
     // over here we are loading different json files.. with different formats  for the 'type' of highchart we want to load
-    //promiseAjax("_js/someitems_HC.json", true)
-    promiseAjax("_js/someitems_HC_PIE.json", true)
+    promiseAjax("_js/someitems_HC.json", true)
+    // promiseAjax("_js/someitems_HC_PIE.json", true)
       .then(function(jsonString) {
         const something = jsonString;
 
         Highcharts.chart("chart1", {
           chart: {
-            //type: 'bar'
-            type: "pie"
+            type: 'bar'
+            // type: "pie"
           },
           title: {
             text: "Loreum Ipson baby!"
