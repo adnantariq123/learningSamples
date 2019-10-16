@@ -96,6 +96,7 @@ h1 {
     outline: 1px solid #8f8;
     outline-offset: -30px;
     line-height: 1.5rem;
+    display: inline-block;
 }
 
 .home-about-textbox h1 {
@@ -123,17 +124,19 @@ h1 {
 .portfolio h1 {
     font-weight: 400;
     position: relative;
+    padding: .25rem;
 }
 
 .portfolio h1:before {
     content: "";
     position: absolute;
-    width:50%;
-    left: 0;
+    width: 20%;
+    left: 50%;
     right: 0;
-    top: 0;
-    height:1px;
-    background:#8f8;
+    top: 0px;
+    height: 1px;
+    background: #8f8;
+    transform: translateX(-50%);
 }
 
 
@@ -168,10 +171,11 @@ h1 {
     }
 
     .home-about .home-about-textbox {
-        width:42%;
-        top: -17%;
-        left:5%;
+        width: 42%;
+        top: -18%;
+        left: 8%;
         position: relative;
+        max-width: 620px;
   
     }
 }
