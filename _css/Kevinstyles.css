@@ -178,20 +178,21 @@ figure img {
 footer {
     background:#333;
     color:#fff;
-    padding:1.5rem;
+    padding:2rem;
     line-height: 1.3rem;
     font-size: .8rem;
 }
 
 footer .col-3 {
     width:100%;
-    margin-bottom:1em ;
+    margin-bottom:1.6em ;
 
 }
 
 footer .col-1 {
     width: 31%;
     display: inline-block;
+    text-align: center;
 }
 
 
