@@ -23,6 +23,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-between;
     height: 50vh;
     width:75vw;
     background: #003366;
@@ -33,7 +34,7 @@ h1 {
     border: 1px solid #fff;
     width: 140px;
     height: 100px;
-    margin: 0px 50px;
+    /* margin: 0px 50px; */
     /* becuase of the margin 50px(that will appear on the left and right of the mm div, 
     the width 150px will actually NOT be meet.) which means it might not be the best appraoch for us... maybe/ may be not */
 }
