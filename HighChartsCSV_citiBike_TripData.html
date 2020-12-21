@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Documentddd</title>
 
     <style>
     #chart1 {
@@ -23,7 +23,7 @@
   <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
 
   <script>
-    function promiseAjax(url, parseJson) {
+    function promiseAjax(url) {
       return new Promise(function(resolve, reject) {
         const xhr = new XMLHttpRequest();
 
@@ -36,7 +36,7 @@
       });
     }
 
-    promiseAjax("_js/201306-citibike-tripdataShort.csv", true)
+    promiseAjax("_js/201306-citibike-tripdataShort.csv")
       .then(function(xyz) {
         //console.log(xyz + "\n\n");
 
@@ -97,7 +97,7 @@
 
         const BigBikeData = [...csvJSON(xyz)];
 
-        console.log(BigBikeData);
+        console.log("BigBikeData : " + BigBikeData);
 
         const tripduration = BigBikeData.map(xyz => ({
           name: xyz.tripduration,

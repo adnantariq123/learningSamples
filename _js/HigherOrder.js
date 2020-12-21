@@ -1,5 +1,5 @@
 
-
+// first we are loading sopmething
 function loadDoc() {
     var xyz = new XMLHttpRequest();
     xyz.onreadystatechange = function() {
@@ -17,6 +17,7 @@ function loadDoc() {
 loadDoc();
 
 
+// get the stuff from loading then do something with it
 makingObj =(stuffy)=> {
     //console.log(stuffy);
     //console.log(stuffy.constructor.name);
