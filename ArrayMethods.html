@@ -7,20 +7,96 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="_css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .example{
+            color:darkgreen;
+        }
+        .example br{
+            content: "";
+            margin: 2em;
+            display: block;
+            font-size: 55%;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
+        <h1>Array & their methods</h1>
+        <BR><BR>
         <div class="row">
-            <p><b>something at the END</b> of an array: myArray<b>.push()</b><BR>
+                <p>
+                The <b style="color: red;">concat()</b> method is used to merge two or more arrays. This <u>method does not change the existing arrays, but instead returns a new array</u>.<BR>
+                    <span class="example">const array3 = array1.concat(array2);</span><BR><BR>
+                
+                <b>By the way <span style="color: red;"">join()</span></b> is different from <b>concat()</b><BR>
+                The <b style="color: red;">join()</b> method creates and returns a new string by concatenating all of the elements in an array<BR>
+                   <span class="example">
+                    const elements = ['Fire', 'Air', 'Water'];<BR><BR>
 
-            <b>something at the BEGIN</b> of an array: myArray<b>.unshift()</b></p>
+                    console.log(elements.join());<BR>
+                    // expected output: "Fire,Air,Water"<BR><BR>
+                    
+                    console.log(elements.join('')); <i><-- THIS is different than the above!</i><BR>
+                    // expected output: "FireAirWater"<BR><BR>
+                    
+                    console.log(elements.join('-'));<BR>
+                    // expected output: "Fire-Air-Water"
+                </span><BR><BR><BR>
+                
+                The <b style="color: red;">every()</b> method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.<BR>
+                    <span class="example">
+                const isBelowThreshold = (currentValue) => currentValue < 40;<BR><BR>
+
+                const array1 = [1, 30, 39, 29, 10, 13];<BR><BR>
+
+                console.log(array1.every(isBelowThreshold));<BR>
+                // expected output: true
+                </span><BR><BR>
+                
+                The <B style="color: red;">filter()</B> method <u>creates a new array with all elements that pass the test implemented by the provided function</u>.<BR>
+                    <span class="example">
+                const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];<BR><BR>
+
+                const result = words.filter(word => word.length > 6);<BR><BR>
+                    
+                console.log(result);<BR>
+                // expected output: Array ["exuberant", "destruction", "present"]
+                </span><BR><BR><BR>
+                
+                The <B style="color: red;">indexOf()</B> method returns the first index at which a given element can be found in the array, or -1 if it is not present.<BR>
+                    <span class="example">
+                    const beasts = ['ant', 'bison', 'camel', 'duck', 'pig'];<BR>
+
+                    console.log(beasts.indexOf('bison'));<BR><BR>
+                    // expected output: 1<BR><BR>
+                    
+                    console.log(beasts.indexOf('giraffe')); <-- as there is no giraffe<BR>
+                    // expected output: -1
+                </span><BR><BR><BR>
+
+                <b>ADDS something at the END</b> of an array: myArray<b>.push()</b><BR>
+                The <b>push()</b> method adds one or more elements to the end of an array <u>and returns the new length</u> of the array.<BR><BR>
+                
+                <b>REMOVE something at the END</b> of an array: myArray<b>.pop()</b><BR>
+                The <b>pop()</b> method removes the last element from an array <u>and returns that element</u>.<BR><BR>
+
+                <b>ADDS something at the BEGIN</b> of an array: myArray<b>.unshift()</b><BR>
+                The <b>unshift()</b> method adds one or more elements to the beginning of an array <u>and returns the new length</u> of the array.<BR><BR>
+
+                <b>REMOVE something at the BEGIN</b> of an array: myArray<b>.shift()</b><BR>
+                The <b>shift()</b> method removes the first element from an array <u>and returns that removed element</u>.<BR><BR>
+        
+            </p>
         </div>
     </div>
 
 
     <div class="container">
         <div class="row">
+            <p><i>Very cool way of making a table from an Array, check code!</i></p>
             <table id="OriginalArray" class="table table-striped table-bordered">
 
             </table>

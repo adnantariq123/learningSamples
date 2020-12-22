@@ -1,5 +1,5 @@
 const items = [
-  { namezz: "Bike", price: 100 },
+  { namezz: "Bike", price: 100, tag:true, what:"ever" },
   { namezz: "TV", price: 700 },
   { namezz: "Album", price: 10 },
   { namezz: "Book", price: 5 },
@@ -77,7 +77,7 @@ console.log("found the item using the .find method "+ foundItem.namezz);
 
 
 items.forEach((item) => {
-    console.log("Using price of all items in array using items.forEach :" +item.price)
+    console.log("Using price of all items in array USING items.forEach :" +item.price)
 });
 
 
