@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1> objects from YT</h1>
+    </body>
+    <script>
+        var myObj = {
+            gift:"pony",
+            pet:"chris",
+            bed:"Not Comfy"
+        }
+
+        function checObj (checkProp) {
+            if (myObj.hasOwnProperty(checkProp)) {
+                return "has that property and it's value is :"+myObj[checkProp]
+            }
+            return "Not Found"
+            
+        }
+
+        
+        console.log(checObj("gift"))
+
+        console.log(checObj("whatevere"))
+
+
+        const CollectedObject= { "items": 
+            [
+                { "namezz": "Bike", "price": 100 },
+                { "namezz": "TV", "price": 700 },
+                { "namezz": "Album", "price": 10 },
+                { "namezz": "Book", "price": 5 },
+                { "namezz": "Phone", "price": 500 },
+                { "namezz": "Computer", "price": 1000 },
+                { "namezz": "Keyboard", "price": 25 }
+            ]
+        }
+
+
+        console.log(CollectedObject)
+        //const JustNamezz
+        // const {price, ...rest} = CollectedObject.items
+        // console.log(rest)
+
+        const NewCollection = CollectedObject.items.map((obj)=> obj.namezz)
+        console.log(NewCollection)
+
+        // a stupid but effect way to clone any object/array
+        var cloneArray = JSON.parse(JSON.stringify(CollectedObject));
+        console.log("a stupid but effect way to clone any object/array")
+        console.log(cloneArray)
+
+    </script>
+</html>
