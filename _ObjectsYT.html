@@ -51,8 +51,87 @@
 
         // a stupid but effect way to clone any object/array
         var cloneArray = JSON.parse(JSON.stringify(CollectedObject));
-        console.log("a stupid but effect way to clone any object/array")
+        console.log("a stupid but effect way to clone any object/array JSON.parse(JSON.stringify(Original Array))")
         console.log(cloneArray)
+
+        console.log("the spread operator is does just that. IT spread the object or array along with the changes you make to it")
+        console.log ("ANOTHERcollectionCopy : ")
+        
+        var ANOTHERcollectionCopy ={...CollectedObject}
+        console.log (ANOTHERcollectionCopy)
+
+        var collection = {
+            "2548": {
+                "album": "Slippery When Wet",
+                "artist": "Bon Jovi",
+                "tracks": [
+                    "Let it Rock",
+                    "You Give Love a Bad Name"
+                ]
+            },
+            "2468": {
+                "album": "1999",
+                "artist": "Prince",
+                "tracks": [
+                    "1999",
+                    "Little Red Corvette"
+                ]
+            },
+            "1245": {
+                "artist": "Robert Palmer",
+                "tracks": []
+            },
+            "5439": {
+                "artist": "Robert Palmer",
+                "tracks": []
+            },
+            "9999": {
+                "album": "KonTiki",
+                "artist": "Johan Soderqvist",
+                "tracks": [
+                    "1999",
+                    "Little Red Corvette"
+                ]                
+            }
+            
+        }
+
+        var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+        console.log("%c%s", "color:blue;", "HOWEVER JSON.parse(JSON.stringify(oringal array)) is better because it cloned the original collectionCopy not spread it")
+        console.log ("collectionCopy :")
+        console.log (collectionCopy)
+
+
+
+        function updateRecords (id,prop,value) {
+            
+            // we first check if the value was left blank, DELETE that property
+            if(value ==="") {
+                delete collection[id][prop]
+            }
+
+            // next we check is If the property is tracks. Then push on to that array
+            else if (prop==="tracks") {
+                // if the "tracks" propert is empty, Then create it. So next line ,we check if it already has something, keep that something OR keep it blank
+                collection[id][prop]= collection[id][prop] || [];
+                collection[id][prop].push(value)
+            } 
+            else {
+                collection[id][prop]=value;
+            }
+
+
+
+            return collection;
+        }
+
+        console.log("updates collection :")
+        console.log(updateRecords(5439, "artist", "ABBA"))
+
+        console.log("again updates collection :")
+        console.log(updateRecords(2468, "tracks", "test test baby"))
+
 
     </script>
 </html>
