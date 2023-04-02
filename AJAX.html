@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AJAX </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AJAX </title>
 </head>
 
 <style>
@@ -13,27 +14,33 @@
     color: #333;
   }
 
-.daxTable {
-  width:85%;
-  margin: 0 auto;
-  border:1px solid #ccc;
-}
+  .daxTable {
+    width: 85%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+  }
 
-.daxTable td, .daxTable th {
-  border:1px solid #ccc;
-  text-align: left;
-}
-
-
-
+  .daxTable td,
+  .daxTable th {
+    border: 1px solid #ccc;
+    text-align: left;
+  }
 </style>
+
 <body>
 
   <h3>AJAX = Asynchronous JavaScript And XML.</h3>
 
+  <p><b>AJAX is not a programming language.</b></p>
+
+  <p>
+    <b>AJAX is a technique for accessing web servers from a web page.</b>
+  </p>
+
   <p>All modern browsers support the XMLHttpRequest object.</p>
 
-  <p>The XMLHttpRequest object can be used to exchange data with a web server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page</p>
+  <p>The XMLHttpRequest object can be used to exchange data with a web server behind the scenes. This means that it is
+    possible to update parts of a web page, without reloading the whole page</p>
   <BR>
   <table class="daxTable">
     <caption>Look at the JS.. as in look at the script tag</caption>
@@ -50,17 +57,17 @@
     <tr>
       <td>readyState</td>
       <td>Holds the status of the XMLHttpRequest.
-          0: request not initialized <BR>
-          1: server connection established<BR>
-          2: request received <BR>
-          3: processing request <BR>
-          4: request finished and response is ready</td>
+        0: request not initialized <BR>
+        1: server connection established<BR>
+        2: request received <BR>
+        3: processing request <BR>
+        4: request finished and response is ready</td>
     </tr>
 
     <tr>
       <td>responseText</td>
       <td>Returns the response data as a string</td>
-    </tr>      
+    </tr>
 
     <tr>
       <td><i>(alternative to responseText)</i> responseXML</td>
@@ -71,49 +78,51 @@
       <td><i>(alternative to both)</i> getAllResponseHeaders<BR><BR>
         <i>(can target one specifically)</i> this.getResponseHeader("Last-Modified");
       </td>
-      <td>(that nerdy thing) returns all the response headers, separated by CRLF, as a string, or returns null if no response has been received.</td>
+      <td>(that nerdy thing) returns all the response headers, separated by CRLF, as a string, or returns null if no
+        response has been received.</td>
     </tr>
-    
-    
+
+
 
     <tr>
-        <td>status</td>
-        <td>Returns the status-number of a request<BR>
-            200: "OK"<BR>
-            403: "Forbidden"<BR>
-            404: "Not Found"</td>
+      <td>status</td>
+      <td>Returns the status-number of a request<BR>
+        200: "OK"<BR>
+        403: "Forbidden"<BR>
+        404: "Not Found"</td>
     </tr>
-      
-      <tr>
-        <td colspan="2" style="text-align: center"><b>... and then, and then, and then</b> (<i>in a crazy chinese women's voice</i>)</td>
-      </tr>
-      <tr>
-        <td>open(method, url, async)</td>
-        <td>Specifies the type of request<BR><BR>
 
-            method: the type of request: GET or POST<BR>
-            url: the server (file) location<BR>
-            async: true (asynchronous) or false (synchronous)</td>
-      </tr>
-      <tr>
-          <td>send()<BR>
-            send(string)
-          </td>
-          <td>Sends the request to the server (used for GET)<BR>
-            Sends the request to the server (used for POST)
-          </td>
-        </tr>
+    <tr>
+      <td colspan="2" style="text-align: center"><b>... and then, and then, and then</b> (<i>in a crazy chinese women's
+          voice</i>)</td>
+    </tr>
+    <tr>
+      <td>open(method, url, async)</td>
+      <td>Specifies the type of request<BR><BR>
+
+        method: the type of request: GET or POST<BR>
+        url: the server (file) location<BR>
+        async: true (asynchronous) or false (synchronous)</td>
+    </tr>
+    <tr>
+      <td>send()<BR>
+        send(string)
+      </td>
+      <td>Sends the request to the server (used for GET)<BR>
+        Sends the request to the server (used for POST)
+      </td>
+    </tr>
 
   </table>
 
 
 
 
-    <div>
-        <h2>The XMLHttpRequest Object</h2>
-        <p id="demo"></p>
-        <button type="button" onclick="loadDoc()">Change Content</button>
-    </div>
+  <div>
+    <h2>The XMLHttpRequest Object</h2>
+    <p id="demo"></p>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+  </div>
 </body>
 
 
@@ -122,25 +131,26 @@
 
 
 
-    function loadDoc() {
-      var xyz = new XMLHttpRequest();
-      xyz.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML =
+  function loadDoc() {
+    var xyz = new XMLHttpRequest();
+    xyz.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
           this.responseText;
 
-          //console.log(this.responseText)
-        }
-      };
-      xyz.open("GET", "ajax_info.txt", true);
-      //xyz.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
-      xyz.send();
+        //console.log(this.responseText)
+      }
+    };
+    xyz.open("GET", "ajax_info.txt", true);
+    //xyz.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+    xyz.send();
 
-      // xyz.open("POST", "ajax_info.txt", true);
-      // xyz.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // xyz.send("fname=Henry&lname=Ford");      
-    }
-    </script>
+    // xyz.open("POST", "ajax_info.txt", true);
+    // xyz.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xyz.send("fname=Henry&lname=Ford");      
+  }
+</script>
+
 </html>
 
 

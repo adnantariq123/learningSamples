@@ -5,11 +5,11 @@ const postBtn =  document.getElementById("post-btn");
 let x = document.getElementById("stuff");
 
 const getData = () => {
-    axios.get('https://reqres.in/api/users').then(response=> {
-    console.log(response);
-    
-    x.innerHTML = makeTableHTML(response.data.data);    
-});
+    axios.get('https://reqres.in/api/users')
+    .then(response=> {
+        console.log(response);
+        x.innerHTML = makeTableHTML(response.data.data);    
+    });
 
 
 

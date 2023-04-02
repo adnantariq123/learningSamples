@@ -23,9 +23,10 @@ makeTableHTML = (myArray) => {
 
         // VERY IMPORTANT
         // look at what .entries does Vs .keys Vs .values  ... play with it ^^
-        
+        //04/02/2023 YEAH THESE ARE COOL, .entries/.keys/.values
+
         loved = Object.values(myArray[i]);
-        //console.log("loved onces :"+loved);
+        console.log("loved onces :"+loved);
 
         for(var j=0; j<loved.length; j++){
             //console.log("did we come to myArray[i] :"+loved);
@@ -61,7 +62,10 @@ const itemNames =  items.map((item) => {
     return item.namezz
 })
 
-console.log("items.map : " +itemNames);
+
+console.log('%c items.map : '+itemNames, 'background: #222; color: #bada55');
+//SAME you can use .table on console!!!!!!!!!!!!
+console.table([itemNames]);
 
 
 
@@ -75,9 +79,9 @@ console.log("found the item using the .find method "+ foundItem.namezz);
 
 
 
-
+console.log('%c Using .forEach (array property) to find the price of each item :', 'background: #222; color: #bada55');
 items.forEach((item) => {
-    console.log("Using price of all items in array USING items.forEach :" +item.price)
+    console.log("Item :" +item.namezz +" it's price : "+ item.price)
 });
 
 

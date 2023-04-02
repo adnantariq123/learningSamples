@@ -12,14 +12,20 @@
 </body>
 
 <script>
-    {
-    myArray = ["Hello" , "Mr", "How", "Do", "You", "Do"]
-    }
+    
+    myArray = ["Hello" , "Mr", "How", "Do", "You", "Do"];
+    
 
     for (i=0; i< myArray.length; i++) {
         console.log(myArray[i])
 
         document.write(<p>myArray[i]</p>)
     }
+
+    myArray.map((item)=>{
+        document.write(<p>{item}</p>)
+    })
+    // why did this crap not work O,o?
+    
 </script>
 </html>
