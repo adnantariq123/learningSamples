@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Amazon free test </title>
+</head>
+
+<style>
+    .displayNone {
+        display: none;
+    }
+
+</style>
+
+<body>
+    <h3> Must have a warning div which check if input has value, Must have a input, and of course list those inputs</h3>
+
+    <div id="inputError" class="somethingRed">Input must have a proper Value! </div>
+    
+    <input id="inputField" type="text">
+
+    <button id="addItemBTN"> add item</button>
+
+</body>
+
+<script>
+    const inputError = document.getElementById("inputError")
+
+    const inputField = document.getElementById("inputField")
+
+    const addItemBTN = document.getElementById("addItemBTN")
+
+    inputError.classList.add("displayNone")
+
+    addItemBTN.addEventListener("click", ()=>{
+        console.log("hooray btn clicked!")
+
+        if(inputField.value.length <=0) {
+            inputError.classList.remove("displayNone")
+        }else {
+            //doSomething
+        }
+    })
+
+
+
+</script>
+
+</html>
