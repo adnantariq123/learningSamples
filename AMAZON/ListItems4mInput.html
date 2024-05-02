@@ -23,6 +23,10 @@
 
     <button id="addItemBTN"> add item</button>
 
+    <ul id="showItems">
+
+    </ul>
+
 </body>
 
 <script>
@@ -32,6 +36,12 @@
 
     const addItemBTN = document.getElementById("addItemBTN")
 
+    const showItems = document.getElementById("showItems")
+
+    const inputArray = []
+    
+    let Array2Display
+
     inputError.classList.add("displayNone")
 
     addItemBTN.addEventListener("click", ()=>{
@@ -40,9 +50,37 @@
         if(inputField.value.length <=0) {
             inputError.classList.remove("displayNone")
         }else {
-            //doSomething
+            
+            inputError.classList.add("displayNone")
+
+            inputArray.push(inputField.value)
+            
+            Array2Display = Array.from(new Set(inputArray))
+
+            console.log(Array2Display)
+
+            const createdLI = Array2Display?.map(item=>{
+                //first we need to create the li for EVERY item pass
+                const li =document.createElement("li")
+
+                // then set the (text)value of the newly created li 
+                li.textContent = item
+
+                //THEN RETURN
+                return li
+            })
+
+            console.log(createdLI)
+
+            // Append all li elements to the ul element
+            createdLI.forEach(function(item) {
+                showItems.appendChild(item);
+            });
+
         }
     })
+
+    
 
 
 
