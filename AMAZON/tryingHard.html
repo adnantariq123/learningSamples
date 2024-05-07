@@ -7,11 +7,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trying hard</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .flexContainer {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            /* align-items: center;
+            justify-content: center; */
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+        .category {
+            border:1px solid #333;
+            padding:10px;
+            justify-content: center;
+            align-items: center;
+            /* flex: 1; */
+            margin: 10px;
+            min-height: 100px;
+            width: 25%;
+            
+            /* display: flex;
+            vertical-align: middle;
+            justify-content: ; */
+        }
+
+        .pFormat {
+            border-bottom: 1px solid #333;
+            text-transform:capitalize;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
 </head>
 
 <body>
-
-    <div id="wrapper">
+    <div>
+        <div id="wrapper" class="flexContainer">
+    </div>  
 
     </div>
 
@@ -51,6 +85,24 @@
         const makeDiv =(key, formmatedArray)=>{
             console.log(key)
             console.log(formmatedArray)
+
+            const userIdDiv =document.createElement("div");
+            userIdDiv.classList.add("category");
+            
+
+            const h3 = document.createElement("h3")
+            h3.innerText = "User ID : " + key
+
+            userIdDiv.appendChild(h3)
+
+            formmatedArray.map(item=>{
+                const title = document.createElement("p")
+                title.classList.add("pFormat")
+                title.innerText = item.title.substring(0, 30);
+                userIdDiv.appendChild(title)
+            })
+
+            return userIdDiv
         }
         
 
@@ -59,14 +111,15 @@
             const allTheData = await fetchAPI()
             const ObjWithUniqueArray = makeObectDifferentArray(allTheData)
 
-            console.log(ObjWithUniqueArray)
+            //console.log(ObjWithUniqueArray)
 
             for (const [key, value] of Object.entries(ObjWithUniqueArray)) {
-                makeDiv(key, value)
+                const divless = makeDiv(key, value)
                 //console.log(`${key}: ${value}`);
-                // const categoryDiv = createCategory(category, questions)
-                // wrapper.append(categoryDiv)
+                wrapper.append(divless)
             }
+
+
 
         }
 
