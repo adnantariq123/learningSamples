@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>youTubeExample </title>
+
+    <script>
+        const QUESTIONS_API_BASE_URL = 'https://www.algoexpert.io/api/fe/questions'
+
+        const fectQuestions = async ()=>{
+            //try {
+                const SomeData = await fetch(QUESTIONS_API_BASE_URL, {
+                            method: 'GET',
+                            mode: 'no-cors',
+                            headers: {
+                            "Content-Type": "application/json",
+                            //'Content-Type': 'text/plain',
+                            },
+                            })
+                const questions =  await SomeData.json()
+
+                console.log(questions)
+                return questions
+            // }
+            // catch(error){
+            //     throw new Error("got an error " + error)
+
+            // }
+
+        }
+
+        const getQuestionsbyCategory =(questions)=>{
+            const questionsbyCategory = {}
+            questions.forEach(question => {
+                if (questionsbyCategory.hasOwnProperty (question.category)) {
+                    questionsbyCategory[questions.category].push(question)
+                }
+                else
+                questionsbyCategory[questions.category] = [question]
+            });
+
+            return questionsbyCategory;
+        }
+
+        const wrapper = document.getElementById('wrapper')
+
+        const fetchAndAppend = async ()=>{
+            const questions = await fectQuestions()
+            // const questionsbyCategory = getQuestionsbyCategory(questions)
+
+            // for (const [category, questions] of Object.entries(questionsbyCategory)) {
+            //     const categoryDiv = createCategory(category, questions)
+            //     wrapper.append(categoryDiv)
+            // }
+
+        }
+
+        const createCategory = (category, questions)=>{
+            const categoryDiv =document.createElement("div");
+            categoryDiv.classList.add("category");
+            
+            const h2 = document.createElement("h2");
+            h2.textContent = category
+
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div')
+                questionDiv.classList.add("question");
+                const h3 = document.createElement("h3")
+                h3.textContent = question.name
+
+                questionDiv.append(h3)
+
+                categoryDiv.append(questionDiv)
+            })
+
+            return categoryDiv;
+        }
+
+        fetchAndAppend()
+
+    </script>
+  </head>
+
+  <body>
+    <h1>SHIT DID NOT WORK</h1>
+
+    <div id="wrapper"></div>
+
+  </body>
+
+
+
+  </html>

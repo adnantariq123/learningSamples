@@ -80,7 +80,7 @@
     // when using the .constructor.name it return an array instead of an object.. ot sure if it's funked
     let convertStuff = JSON.parse(myArray);
     console.log(convertStuff.constructor.name);
-    //console.log(convertStuff);
+     console.log(convertStuff);
 
     //return;
 
@@ -91,7 +91,7 @@
       // look at what .entries does Vs .keys Vs .values  ... play with it ^^
 
       loved = Object.values(convertStuff[i]);
-      //console.log("loved onces :"+loved);
+      console.log("loved onces :"+loved);
 
       for (var j = 0; j < loved.length; j++) {
         //console.log("did we come to myArray[i] :"+loved);

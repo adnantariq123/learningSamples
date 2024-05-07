@@ -45,21 +45,37 @@
     inputError.classList.add("displayNone")
 
     addItemBTN.addEventListener("click", ()=>{
-        console.log("hooray btn clicked!")
-
+        //console.log("hooray btn clicked!")
+        //showItems.removeChild()
+        
         if(inputField.value.length <=0) {
             inputError.classList.remove("displayNone")
         }else {
             
             inputError.classList.add("displayNone")
+            console.log(inputArray)
 
-            inputArray.push(inputField.value)
+            if (!inputArray.includes(inputField.value)) {
+                inputArray.push(inputField.value)
+            }
             
-            Array2Display = Array.from(new Set(inputArray))
+            
+            //Array2Display = Array.from(new Set(inputArray))
 
-            console.log(Array2Display)
+            //console.log(Array2Display)
 
-            const createdLI = Array2Display?.map(item=>{
+            // const checkIfItemExist =(itemPassed)=>{
+               
+            //         console.log(inputArray?.includes(itemPassed))
+            //         return true
+               
+
+            // }
+
+            const createdLI = inputArray?.map(item=>{
+
+                //checkIfItemExist(item)
+                
                 //first we need to create the li for EVERY item pass
                 const li =document.createElement("li")
 
@@ -68,9 +84,12 @@
 
                 //THEN RETURN
                 return li
+                
+
             })
 
             console.log(createdLI)
+           
 
             // Append all li elements to the ul element
             createdLI.forEach(function(item) {

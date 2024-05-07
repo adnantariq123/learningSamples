@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trying hard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    </div>
+
+    <script>
+        const BASE_URL = 'https://jsonplaceholder.typicode.com/posts'
+
+        const fetchAPI = async () => {
+            const responce = await fetch(BASE_URL)
+            const formatResponce = await responce.json()
+
+            return formatResponce
+
+        }
+
+
+        // this function is VERY POWERFUL. it is sorting the array based on the property .userID 
+        // This array is coming from an API call
+        const makeObectDifferentArray = (simplyArray) => {
+            //make a blank object
+            const arrayByCategory = {}
+
+            // 'loop' threw that array we got from the api
+            simplyArray.map(question => {
+                //if question HAS that userId then make an array and push that object.. C 0 0 L!
+                if (arrayByCategory.hasOwnProperty (question.userId)) {
+                    //arrayByCategory.userId = question.userId
+                    arrayByCategory[question.userId].push(question)
+                }
+                else
+                arrayByCategory[question.userId] = [question]
+            });
+
+            return arrayByCategory;            
+        }
+
+
+        const makeDiv =(key, formmatedArray)=>{
+            console.log(key)
+            console.log(formmatedArray)
+        }
+        
+
+
+        const callingAll = async ()=>{
+            const allTheData = await fetchAPI()
+            const ObjWithUniqueArray = makeObectDifferentArray(allTheData)
+
+            console.log(ObjWithUniqueArray)
+
+            for (const [key, value] of Object.entries(ObjWithUniqueArray)) {
+                makeDiv(key, value)
+                //console.log(`${key}: ${value}`);
+                // const categoryDiv = createCategory(category, questions)
+                // wrapper.append(categoryDiv)
+            }
+
+        }
+
+        callingAll()
+
+    </script>
+</body>
+
+</html>
