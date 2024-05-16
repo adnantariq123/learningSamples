@@ -1,0 +1,116 @@
+<!--
+ * I want you to build a widget that has three tabs.
+ * The tabs will contain translations for a phrase in three languages.
+ * You don't need to worry about translating the content yourself.
+ * 
+ *           ╔═══════════╗────────────┬─────────────┐
+ *           ║  English  ║   French   │    German   │
+ *           ║           ╚════════════╧═════════════╗
+ *           ║                                      ║
+ *           ║ Hello World                          ║
+ *           ║                                      ║
+ *           ╚══════════════════════════════════════╝
+ *  
+-->
+ 
+ 
+ 
+<html>
+    <head>
+        <!--langArray = ["E", "F", "G"]-->
+        
+       <script>
+           const english=document.getElementById("english")
+           const french=document.getElementById("french")
+           const german=document.getElementById("german")
+           const tabBody=document.getElementById("tabBody")
+           
+           english.addEventListner ("click", ()=>{
+               tabBody.innerHTML=""
+               tabBody.innerHTML("Hello Wolrd")
+               english.csslist.add("active")
+               french.csslist.remove("active")
+               german.csslist.remove("active")
+           })
+           
+           french.addEventListner ("click", ()=>{
+               tabBody.innerHTML=""
+               tabBody.innerHTML("Hello Wolrd French version")
+               english.csslist.remove("active")
+               french.csslist.add("active")
+               german.csslist.remove("active")
+           })
+           
+           german.addEventListner ("click", ()=>{
+               tabBody.innerHTML=""
+               tabBody.innerHTML("Hello Wolrd German version")
+               english.csslist.remove("active")
+               french.csslist.remove("active")
+               german.csslist.add("active")
+           }) 
+           
+           const tabReturned = lanArray.map(item=>{
+               const divHeader= document.createElement("div")
+               divHeader.innerText(item)
+           })
+           
+           const tabHeader=  document.getElementByClass("tabHeader")
+           
+           tabHeader.appendChild(tabReturned)
+           
+       </script> 
+       
+       <style>
+           .active {
+               border-bottom:none;
+               z-index:2;
+           }
+           
+           .container {
+               width:100%;
+               height:100vh;
+           }
+           
+           .tabs {
+               display:flex;
+               flex-Direction:row;
+           }
+           
+           .tab {
+               border:1px solid #333;
+               z-index:1;
+           }
+           
+           .tabBody {
+               border:1px solid #333;
+           }
+           
+           
+       </style>
+        
+    
+    </head>
+        <body>
+        
+            <div class="container">
+            
+                <div class="tabs" id="tabs">
+                   <div class="tabHeader" >
+                       <div id="english" class="tab"> English</div>
+                       <div id="french" class="tab"> French </div>
+                       <div id="german" class="tab"> German </div>
+                   </div>
+                   
+                   <div id="tabBody">
+                       <p>Hello world</p>
+                   
+                   </div>
+                
+                </div>
+            
+            </div>
+        
+        
+        </body>
+    
+    </html>
