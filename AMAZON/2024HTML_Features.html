@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,11 +7,34 @@
     <title>youTubeExample </title>
 
     <style>
-
         ::backdrop {
             background: #333;
             opacity: 0.7;
         }
+
+        details {
+            padding: 10px;
+            background-color: #e4eaef;
+            border-radius: 5px;
+            border:1px solid #333;
+        }
+
+        summary::marker {
+            color: #e162bf;
+            font-size: 1.2em;
+            }
+
+        .styledBox {
+            padding: 15px;
+            border-radius: 5px;
+            /* border:1px solid #333; */
+            background: #aaa;
+          
+
+
+        }
+
+
 
     </style>
 </head>
@@ -27,27 +51,63 @@
 
 
 
+    <div>
+        <h3> pop over</h3>
+        <div id="pop" popover="auto">what's up pop over</div>
+
+        <button popovertarget="pop" popovertargetaction="show">show pop up</button>
+        <button popovertarget="pop" popovertargetaction="hide">show pop up</button>
+
+
+    </div>
+
+    <br><br>
+    <div>
+        <details>
+            <summary>Click me</summary>
+            <div class="styledBox">
+            Just how cool is that... according like action without the according!
+            </div>
+        </details>
+
+
+
+    </div>
+
+
+    <!-- the datlist requires an input -->
+    <input list="browsers" name="browser" id="browser">
+    <datalist id="browsers">
+      <option value="Edge">
+      <option value="Firefox">
+      <option value="Chrome">
+      <option value="Opera">
+      <option value="Safari">
+    </datalist>
+    <input type="submit">
+
+
 </body>
 
 <script>
     const POST_API_BASE_URL = 'https://jsonplaceholder.typicode.com/posts'
 
 
-    const callingAPI = async (url)=> {
+    const callingAPI = async (url) => {
         try {
             const response = await fetch(url)
             // to create wrong responce => const response = await fetch(url+6)
             // THIS IS THE SOLID ACCURATE WAY OF CHECKING FOR ERROR
-            if (!response.ok) { 
+            if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const formatted = await response.json()
             console.log(formatted)
-        } catch(error) {
+        } catch (error) {
             //throw new Error ("somethign went wrong bro!") this will not work
             console.error("Something went wrong bro!", error);
         }
-        
+
     }
 
     callingAPI(POST_API_BASE_URL)
@@ -58,10 +118,10 @@
 
 
     /// for Modal box
-    const dialog= document.getElementById("myDialog")
+    const dialog = document.getElementById("myDialog")
     const modalBtn = document.getElementById("modalBtn")
 
-    modalBtn.addEventListener("click", ()=> {
+    modalBtn.addEventListener("click", () => {
         console.log("btn is being clicked!!")
         if (!dialog.open) {
             dialog.showModal()
@@ -76,7 +136,7 @@
 
     const closeModal = document.getElementById("closeModal")
 
-    closeModal.addEventListener("click", ()=>{
+    closeModal.addEventListener("click", () => {
         dialog.close()
     })
 
