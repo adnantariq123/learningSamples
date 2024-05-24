@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>youTubeExample </title>
+
+    <style>
+
+        ::backdrop {
+            background: #333;
+            opacity: 0.7;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <button id="modalBtn">Awesome Btn!!</button>
+
+    <dialog id="myDialog">
+        <h3>Awesome Modal/Dialog</h3>
+
+        <button id="closeModal"> Close me (:</button>
+    </dialog>
+
+
+
+</body>
+
+<script>
+    const POST_API_BASE_URL = 'https://jsonplaceholder.typicode.com/posts'
+
+
+    const callingAPI = async (url)=> {
+        try {
+            const response = await fetch(url)
+            // to create wrong responce => const response = await fetch(url+6)
+            // THIS IS THE SOLID ACCURATE WAY OF CHECKING FOR ERROR
+            if (!response.ok) { 
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const formatted = await response.json()
+            console.log(formatted)
+        } catch(error) {
+            //throw new Error ("somethign went wrong bro!") this will not work
+            console.error("Something went wrong bro!", error);
+        }
+        
+    }
+
+    callingAPI(POST_API_BASE_URL)
+
+
+
+
+
+
+    /// for Modal box
+    const dialog= document.getElementById("myDialog")
+    const modalBtn = document.getElementById("modalBtn")
+
+    modalBtn.addEventListener("click", ()=> {
+        console.log("btn is being clicked!!")
+        if (!dialog.open) {
+            dialog.showModal()
+            console.log(dialog.attributes)
+        }
+        // this code will NEVER work becuase the z-idex of the model will prevent you from clicking that button
+        // else {
+        //     dialog.close()
+        // }
+
+    })
+
+    const closeModal = document.getElementById("closeModal")
+
+    closeModal.addEventListener("click", ()=>{
+        dialog.close()
+    })
+
+</script>
+
+</html>
