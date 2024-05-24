@@ -19,46 +19,7 @@
     <head>
         <!--langArray = ["E", "F", "G"]-->
         
-       <script>
-           const english=document.getElementById("english")
-           const french=document.getElementById("french")
-           const german=document.getElementById("german")
-           const tabBody=document.getElementById("tabBody")
-           
-           english.addEventListner ("click", ()=>{
-               tabBody.innerHTML=""
-               tabBody.innerHTML("Hello Wolrd")
-               english.csslist.add("active")
-               french.csslist.remove("active")
-               german.csslist.remove("active")
-           })
-           
-           french.addEventListner ("click", ()=>{
-               tabBody.innerHTML=""
-               tabBody.innerHTML("Hello Wolrd French version")
-               english.csslist.remove("active")
-               french.csslist.add("active")
-               german.csslist.remove("active")
-           })
-           
-           german.addEventListner ("click", ()=>{
-               tabBody.innerHTML=""
-               tabBody.innerHTML("Hello Wolrd German version")
-               english.csslist.remove("active")
-               french.csslist.remove("active")
-               german.csslist.add("active")
-           }) 
-           
-           const tabReturned = lanArray.map(item=>{
-               const divHeader= document.createElement("div")
-               divHeader.innerText(item)
-           })
-           
-           const tabHeader=  document.getElementByClass("tabHeader")
-           
-           tabHeader.appendChild(tabReturned)
-           
-       </script> 
+
        
        <style>
            .active {
@@ -71,7 +32,7 @@
                height:100vh;
            }
            
-           .tabs {
+           .tabHeader {
                display:flex;
                flex-Direction:row;
            }
@@ -112,5 +73,46 @@
         
         
         </body>
+
+        <script>
+            const english=document.getElementById("english")
+            const french=document.getElementById("french")
+            const german=document.getElementById("german")
+            const tabBody=document.getElementById("tabBody")
+            
+            english.addEventListener ("click", ()=>{
+                tabBody.innerHTML=""
+                tabBody.innerHTML="Hello Wolrd"
+                english.csslist.add("active")
+                french.csslist.remove("active")
+                german.csslist.remove("active")
+            })
+            
+            french.addEventListener ("click", ()=>{
+                tabBody.innerHTML=""
+                tabBody.innerHTML="Hello Wolrd French V"
+                english.csslist.remove("active")
+                french.csslist.add("active")
+                german.csslist.remove("active")
+            })
+            
+            german.addEventListener ("click", ()=>{
+                tabBody.innerHTML=""
+                tabBody.innerHTML="Hello Wolrd German V"
+                english.csslist.remove("active")
+                french.csslist.remove("active")
+                german.csslist.add("active")
+            }) 
+            
+            const tabReturned = lanArray.map(item=>{
+                const divHeader= document.createElement("div")
+                divHeader.innerText(item)
+            })
+            
+            const tabHeader=  document.getElementByClass("tabHeader")
+            
+            tabHeader.appendChild(tabReturned)
+            
+        </script> 
     
     </html>
