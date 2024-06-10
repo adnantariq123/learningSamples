@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+
+<html>
+
+
+<body>
+
+    <p id="pOne"></p>
+
+</body>
+
+<script>
+    const pOne = document.getElementById("pOne")
+
+
+    const check4Value = (val1, val2) => {
+        return new Promise((resolved, rejected) => {
+
+            if (val1 > val2) {
+                resolved(`${val1} is greater than ${val2}`)
+            } else {
+                rejected(`Nope! ${val1} is NOT greater than ${val2}`)
+            }
+        })
+    }
+
+    check4Value(15, 7)
+        .then((message) => {
+            console.log(message);
+            //pOne.textContent(message)
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+
+    check4Value(15, 47)
+        .then((message) => {
+            console.log(message);
+            //pOne.textContent(message)
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+
+    /* did not work :(
+document.addEventListener("DOMContentLoaded", function () {
+    
+
+    check4Value(15, 7)
+    .then((message) => {
+        pOne.textContent(message)
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+
+});
+*/
+
+
+</script>
+
+
+</html>

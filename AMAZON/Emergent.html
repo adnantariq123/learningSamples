@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+
+    <button id="get-btn">get</button>
+
+    <button id="post-btn">post</button>
+
+    <BR><BR><BR>
+
+    <table id="stuff">
+
+    </table>
+
+
+    <button id="modalBtn">Awesome Btn!!</button>
+
+    <dialog id="myDialog">
+        <h3>Awesome Modal/Dialog</h3>
+
+        <button id="closeModal"> Close me (:</button>
+    </dialog>
+</body>
+
+<script>
+    function VersionCompare(version1, version2) {
+
+        //Insert your code here 
+        // we cannot directly compare version1, and version2 as they are string. We need to covnert them first.
+        let v1 = parseFloat(version1)
+        let v2 = parseFloat(version2)
+
+        console.log(v1)
+        console.log(v2)
+
+        if (v1 < v2) {
+            // should return -1 when version1 is less than version2
+            return -1
+        } else
+            if (v1 == v2) {
+                // should return 0 when version1 and version2 are the same
+                return 0
+            } else
+                if (v1 > v2) {
+                    //should return 1 when version1 is greater than version2
+                    return 1
+                }
+
+        // running the test, I am getting 7 out of 9 correct. 2 test are wrong
+    }
+
+    //console.log(VersionCompare("2", "2.0"))
+
+    //Result: 0
+    //Expected: -1
+    console.log(VersionCompare("2", "2.0.0.0.1"))
+
+</script>
+
+</html>
