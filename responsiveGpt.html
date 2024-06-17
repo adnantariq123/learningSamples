@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Page with Dropdown Menu</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover,
+        .menu-item .dropdown:hover {
+            background-color: #444;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            nav.active .menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu">
+            <div class="menu-item">Home</div>
+            <div class="menu-item dropdown">
+                <span>Services</span>
+                <div class="dropdown-content">
+                    <a href="#">Web Design</a>
+                    <a href="#">SEO</a>
+                    <a href="#">Marketing</a>
+                </div>
+            </div>
+            <div class="menu-item dropdown">
+                <span>About</span>
+                <div class="dropdown-content">
+                    <a href="#">some</a>
+                    <a href="#">other </a>
+                    <a href="#">stuff</a>
+                </div>
+            </div>
+            <div class="menu-item">Contact</div>
+        </div>
+        <div class="menu-icon">
+            ☰
+        </div>
+    </nav>
+
+    <main>
+        <h1>Welcome to Our Website</h1>
+        <p>This is a responsive webpage with a dropdown menu.</p>
+    </main>
+
+    <script>
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuIcon = document.querySelector('.menu-icon');
+            const nav = document.querySelector('nav');
+
+            menuIcon.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
