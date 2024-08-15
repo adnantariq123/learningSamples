@@ -75,14 +75,19 @@
     </div>
 
 
+    <br/><br/>
     <!-- the datlist requires an input -->
-    <input list="browsers" name="browser" id="browser">
-    <datalist id="browsers">
-      <option value="Edge">
+
+    <h3>what's cool about this Input is the list attribute which is coming from a datalist. THAT datalist options is now coming from an async call from an api. Look at the js part and the use of .then</h3>
+    <input list="SomeDataList" name="browser" id="browser">
+
+    
+    <datalist id="SomeDataList">
+      <!-- <option value="Edge">
       <option value="Firefox">
       <option value="Chrome">
       <option value="Opera">
-      <option value="Safari">
+      <option value="Safari"> -->
     </datalist>
     <input type="submit">
 
@@ -102,7 +107,8 @@
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const formatted = await response.json()
-            console.log(formatted)
+            return formatted
+            //console.log(formatted)
         } catch (error) {
             //throw new Error ("somethign went wrong bro!") this will not work
             console.error("Something went wrong bro!", error);
@@ -110,7 +116,17 @@
 
     }
 
-    callingAPI(POST_API_BASE_URL)
+    callingAPI(POST_API_BASE_URL).then(data=>{
+        //console.log(data)
+        let SomeDataList = document.getElementById("SomeDataList");
+        data.map(item => {
+            let Options = document.createElement("option");
+            Options.setAttribute("data-id", item.id);
+            Options.value= item.title.substr(0, 18).toUpperCase();
+            SomeDataList.appendChild(Options)
+        })
+        
+    })
 
 
 
