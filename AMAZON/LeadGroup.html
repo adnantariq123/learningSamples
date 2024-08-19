@@ -1,0 +1,44 @@
+<html>
+
+<script>
+   
+const transactions = [
+  { id: 1, amount: 50, category: 'Food' },
+  { id: 2, amount: -20, category: 'Transportation' },
+  { id: 3, amount: 30, category: 'Food' },
+  { id: 4, amount: 40, category: 'Entertainment' },
+  { id: 5, amount: -10, category: 'Food' }
+];
+
+
+const calculateTotalSpent =(arr, value, symbol)=>{
+  const innerArray =arr.filter((item=>{
+    	// if(item.category.includes(value)) {
+    	// return item
+    	// }
+    if (item.category===value && item.amount > 0){
+      return true;
+    } else {
+      return false;
+    } 
+  }))
+  
+  let totalValue=0;
+  
+  for ( let i of innerArray) {
+    // if (i.amount > 0 ) {
+      totalValue += i.amount
+    //}
+    
+  }
+  
+  return symbol+totalValue
+  
+}
+
+console.log(calculateTotalSpent(transactions, 'Food', '$')); // Should output "$80"
+
+
+ 
+</script>
+</html>
