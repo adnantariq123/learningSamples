@@ -13,20 +13,20 @@
 
     <button id="get-btn">get</button>
 
-    <button id="post-btn">post</button>
 
 
 
-        <table id="myTable">
 
-        </table>
+        <main id="myMain">
+
+        </main>
 
 </body>
 
 
 <script>
     const getBtn= document.getElementById("get-btn")
-    const myTable= document.getElementById("myTable")
+    const myMain= document.getElementById("myMain")
 
 
     getBtn.addEventListener("click", ()=>{
@@ -52,13 +52,42 @@
     const callingALLFunction =async ()=>{
 
         const data4mAPI = await callApi();
-        LetsBuiltTable(data4mAPI)
+        const formation = LetsBuiltTable(data4mAPI)
         
+        myMain.append(formation)
         //console.trace();
     }
 
     const LetsBuiltTable = (passedArray)=> {
         console.table(passedArray)
+
+        const divless=document.createElement("div")
+
+        const formatted = passedArray.map((item,i)=> {
+            
+            const sectional = document.createElement("section")
+            sectional.classList.add("mySection")
+            
+
+            const h3= document.createElement("h3")
+            h3.innerHTML= item.first_name + "&nbsp;"+item.last_name
+
+            const img = document.createElement("img")
+            img.setAttribute("src", item.avatar)
+
+            sectional.appendChild(h3)
+            sectional.appendChild(img)
+
+
+
+            divless.appendChild(sectional)
+
+            
+        })
+
+        return divless
+
+        
 
     }
 
